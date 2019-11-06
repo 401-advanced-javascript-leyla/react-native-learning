@@ -8,6 +8,8 @@ export default function App() {
   const [goals, setGoals] = useState([]); 
   const [isAddMode, setIsAddMode] = useState(false);
 
+  console.log('updated goals', goals);
+
   const addGoalHnadler = (goalTitle) => {
     setGoals(currentGoals => [...currentGoals, { id: Math.random().toString(), value: goalTitle}]);
     setIsAddMode(false);

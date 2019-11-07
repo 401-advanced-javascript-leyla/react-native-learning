@@ -1,11 +1,9 @@
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, Button, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { View, Text, StyleSheet, Button, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
 
 import Card from '../components/Card';
 import Colors from '../constants/colors';
 import Input from '../components/Input';
-import { parse } from 'qs';
-import { selectAssetSource } from 'expo-asset/build/AssetSources';
 
 const StartGameScreen = props => {
     const [enteredValue, setEnteredValue] = useState('');
@@ -24,6 +22,7 @@ const StartGameScreen = props => {
     const confirmInputHandler = () => {
         const chosenNumber = parseInt(enteredValue);
         if (chosenNumber === NaN || chosenNumber <= 0 || chosenNumber > 99){
+            Alert.alert('Invalid number entered', 'Please enter a number between 1 and 99', [{text:'Okay', style:'destructive', onPress: resetInputHandler}]);
             return;
         }
         setConfirmed(true);
